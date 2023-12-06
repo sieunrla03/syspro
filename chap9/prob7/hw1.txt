@@ -1,0 +1,25 @@
+sleep 100 &
+[1] 9413
+
+sleep 100 &
+[2] 9415
+
+jobs
+[1]-  Running                 sleep 100 &
+[2]+  Running                 sleep 100 &
+
+ps -f
+UID        PID  PPID  C STIME TTY          TIME CMD
+dcuuser   9340     0  0 06:34 pts/9    00:00:00 /bin/bash -l
+dcuuser   9413  9340  0 06:42 pts/9    00:00:00 sleep 100
+dcuuser   9415  9340  0 06:43 pts/9    00:00:00 sleep 100
+dcuuser   9417  9340  0 06:43 pts/9    00:00:00 ps -f
+
+kill %1
+[1]-  Terminated              sleep 100
+
+ps -f
+UID        PID  PPID  C STIME TTY          TIME CMD
+dcuuser   9340     0  0 06:34 pts/9    00:00:00 /bin/bash -l
+dcuuser   9415  9340  0 06:43 pts/9    00:00:00 sleep 100
+dcuuser   9419  9340  0 06:43 pts/9    00:00:00 ps -f
